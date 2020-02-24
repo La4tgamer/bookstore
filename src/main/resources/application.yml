@@ -1,0 +1,12 @@
+book: /root/bookstore/bookPhoto/
+spring:
+  mvc:
+    static-path-pattern: /photo/**
+  resources:
+    static-locations: file:${book}
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
