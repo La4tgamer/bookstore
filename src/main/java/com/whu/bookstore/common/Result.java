@@ -1,4 +1,4 @@
-package com.whu.bookstore.Common;
+package com.whu.bookstore.common;
 
 /**
  * @author ：qx.w
