@@ -1,7 +1,8 @@
 package com.whu.bookstore.controller;
 
+import com.whu.bookstore.common.Result;
 import com.whu.bookstore.entity.ShoppingCart;
-import com.whu.bookstore.service.IShoppingCart;
+import com.whu.bookstore.service.IShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,13 +23,15 @@ import java.util.List;
 @RequestMapping("/demo")
 public class DemoController {
     @Autowired
-    IShoppingCart shoppingCart;
+    IShoppingCartService shoppingCartService;
 
 
     @GetMapping(value = "/user/{username}")
-    public String user(@PathVariable("username") String username){
-        List<ShoppingCart> shoppingCarts = shoppingCart.getByUser(username);
-        return "这就是收到的" + shoppingCarts.get(0);
+    public Result user(@PathVariable("username") String username){
+        List<ShoppingCart> shoppingCarts = shoppingCartService.getByUser(username);
+        Result result = new Result();
+        result.setData(shoppingCarts);
+        return result;
 
     }
 
