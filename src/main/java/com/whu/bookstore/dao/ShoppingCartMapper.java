@@ -14,5 +14,11 @@ import java.util.List;
  */
 @Mapper
 public interface ShoppingCartMapper {
+    /**
+     * 通过用户名查找
+     * @param username
+     * @return
+     */
     List<ShoppingCart> selectByUser(@Param("username") String username);
+
 }
