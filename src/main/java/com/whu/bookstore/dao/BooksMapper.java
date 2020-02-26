@@ -1,0 +1,36 @@
+package com.whu.bookstore.dao;
+
+import com.whu.bookstore.common.BookVo;
+import com.whu.bookstore.entity.Book;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+/**
+ * @author ：qx.w
+ * @description：书籍mapper层
+ * @modified By：
+ * @since ：Created in 2020/2/26 17:10
+ */
+@Mapper
+public interface BooksMapper {
+
+    /**
+     * 通过类别查找所有书（简略信息）
+     * @param sort
+     * @return
+     */
+    List<BookVo> selectAllBySort(@Param("sort") String sort);
+
+    /**
+     * 通过uuid查找一本书（具体信息）
+     * @param uuid
+     * @return
+     */
+    List<Book> selectByUuid(@Param("uuid") String uuid);
+
+}
+
+
+
