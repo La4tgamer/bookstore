@@ -7,4 +7,9 @@
         order by num
     </select>
 
+    <insert id="insertGoods">
+        insert into shopping_cart (uuid,username,book_id,num,single_price)
+        values (#{uuid},#{username},#{bookId},#{num},#{singlePrice})
+    </insert>
+
 </mapper>

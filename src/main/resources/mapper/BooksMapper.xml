@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whu.bookstore.dao.BooksMapper">
+    <select id="selectByUuid" resultType="com.whu.bookstore.entity.Book">
+        select * from books
+        where uuid = #{uuid}
+    </select>
+
+
+    <select id="selectAllBySort" resultType="com.whu.bookstore.common.BookVo">
+        select uuid,name,image,sort,price from books
+    <if test="sort!=null">
+        where sort = #{sort}
+    </if>
+        order by name
+    </select>
+
+</mapper>
