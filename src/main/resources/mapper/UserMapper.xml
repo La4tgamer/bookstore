@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whu.bookstore.dao.UserMapper">
+    <select id="selectByUsername" resultType="com.whu.bookstore.entity.User">
+        select * from users
+        where username = #{username}
+    </select>
+
+    <select id="deleteByUsername" resultType="com.whu.bookstore.entity.User">
+        delete from users
+        where username = #{username}
+    </select>
+
+    <insert id="insertUser"  parameterType="com.whu.bookstore.entity.User">
+        INSERT INTO users VALUES(#{uuid},#{username},#{password},#{name},#{position},#{image})
+    </insert>
+
+    <select id="updateUser" resultType="com.whu.bookstore.entity.User">
+        UPDATE users SET name = #{name}, password=#{password} ,position=#{position } ,image=#{image} WHERE username=#{username}
+    </select>
+
+    <select id="updateName" resultType="com.whu.bookstore.entity.User">
+        UPDATE users SET name = #{name} WHERE username=#{username}
+    </select>
+
+    <select id="selectPassword" resultType="com.whu.bookstore.entity.User">
+        select * from users
+        where username = #{username}
+    </select>
+
+</mapper>
