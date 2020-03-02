@@ -14,6 +14,8 @@ public class User {
     private String name;
     // 身份
     private String position;
+    // 头像
+    private String image;
 
     public String getUuid() {
         return uuid;
@@ -60,4 +62,11 @@ public class User {
         return username + "," + password + "," + name + "," + position;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

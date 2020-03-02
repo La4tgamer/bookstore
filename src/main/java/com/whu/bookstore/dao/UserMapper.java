@@ -21,4 +21,7 @@ public interface UserMapper {
 
     // 改昵称
     List<User> updateName(@Param("username") String username, @Param("name") String name);
+
+    // 改图片
+    List<User> updateImage(@Param("username") String username, @Param("image") String image);
 }

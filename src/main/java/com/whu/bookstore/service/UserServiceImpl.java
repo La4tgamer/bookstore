@@ -49,6 +49,12 @@ public class UserServiceImpl implements IUserService {
         return "修改成功";
     }
 
+    // 修改图片
+    public String updImage(String username, String image) {
+        userMapper.updateImage(username,image);
+        return "修改成功";
+    }
+
     // 生成token
     public String getToken(String username, String password) {
         // 需要加密的字符串

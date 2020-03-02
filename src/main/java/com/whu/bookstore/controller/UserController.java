@@ -71,35 +71,35 @@ public class UserController {
         return result;
     }
 
-    // 更改用户信息
-    @PutMapping("/user/change/{username}")
-    public Result putUser(@PathVariable("username") String username, @RequestParam("password") String password, @RequestParam("name") String name, @RequestParam("position") String position,@RequestParam("image") String image) {
-        userService.updUser(username,password,name,position,image);
-        Result result = new Result();
-        List<User> user=userService.getByUsername(username);
-        result.setData(user);
-        return result;
-    }
+//    // 更改用户信息
+//    @PutMapping("/user/change/{username}")
+//    public Result putUser(@PathVariable("username") String username, @RequestParam("password") String password, @RequestParam("name") String name, @RequestParam("position") String position,@RequestParam("image") String image) {
+//        userService.updUser(username,password,name,position,image);
+//        Result result = new Result();
+//        List<User> user=userService.getByUsername(username);
+//        result.setData(user);
+//        return result;
+//    }
 
     // 更改昵称
     @PutMapping("/user/changename/{username}")
     public Result putUser(@PathVariable("username") String username,  @RequestParam("name") String name) {
         userService.updName(username,name);
         Result result = new Result();
-        List<User> user=userService.getByUsername(username);
-        result.setData(user);
+//        List<User> user=userService.getByUsername(username);
+        result.setMsg("更改昵称成功");
         return result;
     }
 
-//    // 更改图片
-//    @PutMapping("/user/changeimage/{username}")
-//    public Result putImage(@PathVariable("username") String username,  @RequestParam("image") String image) {
-//        userService.updName(username,image);
-//        Result result = new Result();
+    // 更改图片
+    @PutMapping("/user/changeimage/{username}")
+    public Result putImage(@PathVariable("username") String username,  @RequestParam("image") String image) {
+        userService.updImage(username,image);
+        Result result = new Result();
 //        List<User> user=userService.getByUsername(username);
-//        result.setData(user);
-//        return result;
-//    }
+        result.setMsg("更改图片成功");
+        return result;
+    }
 
     /*测试token  不登录没有token*/
 //    @UserLoginToken
