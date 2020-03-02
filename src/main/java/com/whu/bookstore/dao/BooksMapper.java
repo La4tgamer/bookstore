@@ -4,6 +4,8 @@ import com.whu.bookstore.common.BookVo;
 import com.whu.bookstore.entity.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -30,6 +32,15 @@ public interface BooksMapper {
      */
     List<Book> selectByUuid(@Param("uuid") String uuid);
 
+//    @Param("name") String name,
+//    @Param("author") String author,
+//    @Param("press") String press,
+//    @Param("sort") String sort,
+//    @Param("price") double price,
+//    @Param("stock") int stock,
+//    @Param("description") String description,
+//    @Param("image") String image
+    int insertBook(Book book);
 }
 
 
