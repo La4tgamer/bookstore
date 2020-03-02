@@ -2,6 +2,7 @@ package com.whu.bookstore.service;
 
 import com.whu.bookstore.common.BookVo;
 import com.whu.bookstore.entity.Book;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +26,26 @@ public interface IBooksService {
      * @return
      */
     List<BookVo> getBookVoBySort(String sort);
+
+    /**
+     * 插入一本书
+     * @param name
+     * @param author
+     * @param press
+     * @param sort
+     * @param price
+     * @param stock
+     * @param description
+     * @param image
+     * @return
+     */
+    int insertBook(String uuid,
+                   String name,
+                   String author,
+                   String press,
+                   String sort,
+                   double price,
+                   int stock,
+                   String description,
+                   String image);
 }
