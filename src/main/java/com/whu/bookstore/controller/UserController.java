@@ -1,10 +1,15 @@
 package com.whu.bookstore.controller;
 
+import com.whu.bookstore.Util.PictureUtil;
 import com.whu.bookstore.common.Result;
 import com.whu.bookstore.entity.User;
 import com.whu.bookstore.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 import java.util.List;
@@ -28,7 +33,7 @@ public class UserController {
 
 
     // 登录
-    @RequestMapping("/user/login")
+    @GetMapping("/user/login")
     public Result login(@RequestParam("username") String username,@RequestParam("password") String password)  {
         List<User> user = userService.getByUsername(username);
         Result result = new Result();
@@ -62,7 +67,8 @@ public class UserController {
         if (user==null|| user.size() ==0){
             //result.setData(userService.insUser(uuid, username, password, name, position,image));
             String position = "ordinaryuser";
-            String image = "默认图片";
+            String image = "http://localhost:9010/photo/default.jpg";
+
             result.setMsg(userService.insUser(uuid, username, password, name, position,image));
         }
         else {
@@ -93,11 +99,36 @@ public class UserController {
 
     // 更改图片
     @PutMapping("/user/changeimage/{username}")
-    public Result putImage(@PathVariable("username") String username,  @RequestParam("image") String image) {
-        userService.updImage(username,image);
+    public Result putImage(@PathVariable("username") String username, @RequestParam("image") MultipartFile image) {
+       // userService.updImage(username,image);
         Result result = new Result();
 //        List<User> user=userService.getByUsername(username);
-        result.setMsg("更改图片成功");
+
+        // 删图
+        List<User> user = userService.getByUsername(username);
+      //  String path = user.get(5).toString();
+        String path  = user.get(0).getImage().toString();
+        PictureUtil.deletePhoto(path);
+
+        String url = PictureUtil.uploadImage(image, username, PictureUtil.filePathUser);
+        if (url.equals("上传失败，请上传bmp、jpg、jpeg、png、gif文件！")){
+            result.setCode(400);
+            result.setMsg(url);
+            return result;
+        }else if (url.equals("图片上传至服务器失败！")){
+            result.setCode(400);
+            result.setMsg(url);
+            return result;
+        }
+        try {
+            userService.updImage(username, url);
+            result.setMsg("上传成功！");
+        }
+        catch (Exception e) { //上传数据库失败则删除那张图片
+//            objService.deletePhoto(uuid, url);
+            result.setMsg("上传失败，数据库写入失败！");
+        }
+
         return result;
     }
 
