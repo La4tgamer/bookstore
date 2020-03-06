@@ -22,4 +22,7 @@ public interface IUserService {
 
     // 改昵称
     String updName(String username, String name);
+
+    // 改图片
+    String updImage(String username, String image);
 }

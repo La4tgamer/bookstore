@@ -23,6 +23,10 @@
         UPDATE users SET name = #{name} WHERE username=#{username}
     </select>
 
+    <select id="updateImage" resultType="com.whu.bookstore.entity.User">
+        UPDATE users SET image = #{image} WHERE username=#{username}
+    </select>
+
     <select id="selectPassword" resultType="com.whu.bookstore.entity.User">
         select * from users
         where username = #{username}
