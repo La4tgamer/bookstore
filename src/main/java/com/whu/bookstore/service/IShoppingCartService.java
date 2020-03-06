@@ -27,7 +27,7 @@ public interface IShoppingCartService {
      * @param singlePrice
      * @return
      */
-    int insertBook(String uuid, String username, String bookId, int num, double singlePrice, String image);
+    int insertBook(String uuid, String username, String name, String bookId, int num, double singlePrice, String image);
 
     /**
      * 修改购物车里面的书籍
@@ -38,7 +38,7 @@ public interface IShoppingCartService {
      * @param singlePrice
      * @return
      */
-    int updateBook(String uuid, String username, String bookId, int num, double singlePrice, String image);
+    int updateBook(String uuid, String username, String name, String bookId, int num, double singlePrice, String image);
 
     /**
      * 修改购物车里的书籍数量

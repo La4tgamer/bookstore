@@ -25,10 +25,11 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
     }
 
     @Override
-    public int insertBook(String uuid, String username, String bookId, int num, double singlePrice, String image) {
+    public int insertBook(String uuid, String username, String name, String bookId, int num, double singlePrice, String image) {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setUuid(uuid);
         shoppingCart.setUsername(username);
+        shoppingCart.setName(name);
         shoppingCart.setBookId(bookId);
         shoppingCart.setNum(num);
         shoppingCart.setSinglePrice(singlePrice);
@@ -37,10 +38,11 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
     }
 
     @Override
-    public int updateBook(String uuid, String username, String bookId, int num, double singlePrice, String image) {
+    public int updateBook(String uuid, String username, String name, String bookId, int num, double singlePrice, String image) {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setUuid(uuid);
         shoppingCart.setUsername(username);
+        shoppingCart.setName(name);
         shoppingCart.setBookId(bookId);
         shoppingCart.setNum(num);
         shoppingCart.setSinglePrice(singlePrice);

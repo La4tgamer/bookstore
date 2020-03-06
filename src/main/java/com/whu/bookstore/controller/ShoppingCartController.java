@@ -38,6 +38,7 @@ public class ShoppingCartController {
 
     @PostMapping(value = "/{username}")
     public Result uploadABook(@PathVariable("username") String username,
+                              @RequestParam("name") String name,
                               @RequestParam("bookId") String bookId,
                               @RequestParam("num") int num,
                               @RequestParam("singlePrice") double singlePrice,
@@ -45,7 +46,7 @@ public class ShoppingCartController {
         Result result = new Result();
         String uuid = UUID.randomUUID().toString(); //生成UUID
         try {
-            int count = shoppingCartService.insertBook(uuid, username, bookId, num, singlePrice, image);
+            int count = shoppingCartService.insertBook(uuid, username, name, bookId, num, singlePrice, image);
             result.setData(count);
             result.setMsg("成功，插入条数为data");
             result.setCode(200);

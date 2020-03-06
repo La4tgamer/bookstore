@@ -8,12 +8,12 @@
     </select>
 
     <insert id="insertBook" parameterType="com.whu.bookstore.entity.ShoppingCart">
-        insert into shopping_cart (uuid,username,book_id,num,single_price, image)
-        values (#{uuid},#{username},#{bookId},#{num},#{singlePrice},#{image})
+        insert into shopping_cart (uuid,username,name,book_id,num,single_price, image)
+        values (#{uuid},#{username},#{name},#{bookId},#{num},#{singlePrice},#{image})
     </insert>
 
     <update id="updateBook" parameterType="com.whu.bookstore.entity.ShoppingCart">
-        update shopping_cart SET uuid=#{uuid}, username=#{username}, book_id=#{bookId},
+        update shopping_cart SET uuid=#{uuid}, username=#{username}, name=#{name}, book_id=#{bookId},
             num=#{num},single_price=#{singlePrice},image=#{image}
         where uuid = #{uuid}
     </update>

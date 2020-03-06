@@ -20,6 +20,8 @@ public class ShoppingCart {
      */
     private String username;
 
+    private String name;
+
     private String bookId;
 
     private int num;
@@ -79,5 +81,13 @@ public class ShoppingCart {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
