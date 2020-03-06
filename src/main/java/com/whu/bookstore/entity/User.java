@@ -17,6 +17,8 @@ public class User {
     // 头像
     private String image;
 
+    private String token;
+
     public String getUuid() {
         return uuid;
     }
@@ -68,5 +70,13 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

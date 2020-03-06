@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import java.util.List;
@@ -36,6 +37,9 @@ public class UserController {
     @GetMapping("/user/login")
     public Result login(@RequestParam("username") String username,@RequestParam("password") String password)  {
         List<User> user = userService.getByUsername(username);
+        List<String> userLogin =  new ArrayList();
+        ArrayList a = new ArrayList();
+
         Result result = new Result();
         if(user==null|| user.size() ==0){
             result.setMsg("用户名不存在");
@@ -45,7 +49,14 @@ public class UserController {
         }
         else if (password.equals(user.get(0).getPassword())){
             String token = userService.getToken(username,password);
-            result.setMsg(token);
+            userLogin.add(token);
+            userLogin.add(user.get(0).getPosition());
+          //  result.setData(user.get(0).getPosition()+" "+token);
+            result.setData(userLogin);
+          //  result.setMsg(token);
+
+            user.get(0).setToken(token);
+            result.setData(user);
         }
         return result;
     }

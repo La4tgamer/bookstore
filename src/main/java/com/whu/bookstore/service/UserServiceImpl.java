@@ -20,42 +20,88 @@ public class UserServiceImpl implements IUserService {
     @Resource
     UserMapper userMapper;
 
+    /**
+     * 得到用户信息
+     * @param username
+     * @return
+     */
     @Override
-    // 得到用户信息
     public List<User> getByUsername(String username) {
         return userMapper.selectByUsername(username);
     }
 
-    // 删除用户，这个现在没用
+    /**
+     * 删除用户，这个现在没用
+     * @param username
+     * @return
+     */
+    @Override
     public List<User> delByUsername(String username) {
         return userMapper.deleteByUsername(username);
     }
 
-    // 添加用户，注册
+    /**
+     * 注册
+     * @param uuid
+     * @param username
+     * @param password
+     * @param name
+     * @param position
+     * @param image
+     * @return
+     */
+    @Override
     public String insUser(String uuid, String username, String password, String name, String position,String image) {
         userMapper.insertUser(uuid,username,password,name,position,image);
         return "注册成功";
     }
 
-    // 修改用户信息
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param position
+     * @param image
+     * @return
+     */
+    @Override
     public String updUser(String username, String password, String name, String position,String image) {
         userMapper.updateUser(username,password,name,position,image);
         return "修改成功";
     }
 
-    // 修改昵称
+    /**
+     * 改昵称
+     * @param username
+     * @param name
+     * @return
+     */
+    @Override
     public String updName(String username, String name) {
         userMapper.updateName(username,name);
         return "修改成功";
     }
 
-    // 修改图片
+    /**
+     * 改图片
+     * @param username
+     * @param image
+     * @return
+     */
+    @Override
     public String updImage(String username, String image) {
         userMapper.updateImage(username,image);
         return "修改成功";
     }
 
-    // 生成token
+    /**
+     * 生成token
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
     public String getToken(String username, String password) {
         // 需要加密的字符串
         String src = username + password;
