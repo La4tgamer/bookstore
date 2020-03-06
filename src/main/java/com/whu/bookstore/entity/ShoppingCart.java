@@ -16,18 +16,33 @@ public class ShoppingCart {
     private String uuid;
 
     /**
-     *
+     *用户名
      */
     private String username;
 
+    /**
+     * 书名
+     */
     private String name;
 
+    /**
+     * 书主键
+     */
     private String bookId;
 
+    /**
+     * 数量
+     */
     private int num;
 
+    /**
+     * 单价
+     */
     private double singlePrice;
 
+    /**
+     * 图片地址
+     */
     private String image;
 
     public String getUuid() {
