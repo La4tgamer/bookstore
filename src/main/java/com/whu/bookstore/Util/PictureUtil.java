@@ -46,26 +46,29 @@ public class PictureUtil {
         return url + UUID + suffixName;
     }
 
-//    /**
-//     * 删除服务器上的文件
-//     * @param UUID
-//     */
-//    public void deletePhoto(String UUID){
+    /**
+     * 删除服务器上的文件
+     * @param path
+     */
+    public static void deletePhoto(String path){
 //        objectTable obj = objRepository.findById(UUID).get();
 //        String photoName = obj.getPhotoUrl();
 //        String suffixName = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
 //
 //        File file = new File(filePath + UUID + suffixName);
 //        file.delete();
-//    }
-//
-//    /**
-//     * 删除服务器上的文件
-//     * @param UUID
-//     */
-//    public void deletePhoto(String UUID, String photoName){
-//        String suffixName = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
-//        File file = new File(filePath + UUID + suffixName);
-//        file.delete();
-//    }
+        int lastIndexOf = path.lastIndexOf("/");
+        String img_path = path.substring(lastIndexOf + 1, path.length());
+        if(!img_path.equals("default.jpg"))
+        {
+            img_path = "E:/photo/" + img_path;
+            File file = new File(img_path);
+            file.delete();
+        }
+        else
+        {
+
+        }
+
+    }
 }

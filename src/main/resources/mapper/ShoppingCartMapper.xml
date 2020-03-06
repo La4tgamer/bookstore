@@ -7,9 +7,29 @@
         order by num
     </select>
 
-    <insert id="insertGoods">
-        insert into shopping_cart (uuid,username,book_id,num,single_price)
-        values (#{uuid},#{username},#{bookId},#{num},#{singlePrice})
+    <insert id="insertBook" parameterType="com.whu.bookstore.entity.ShoppingCart">
+        insert into shopping_cart (uuid,username,book_id,num,single_price, image)
+        values (#{uuid},#{username},#{bookId},#{num},#{singlePrice},#{image})
     </insert>
 
+    <update id="updateBook" parameterType="com.whu.bookstore.entity.ShoppingCart">
+        update shopping_cart SET uuid=#{uuid}, username=#{username}, book_id=#{bookId},
+            num=#{num},single_price=#{singlePrice},image=#{image}
+        where uuid = #{uuid}
+    </update>
+
+    <update id="updateBookNum">
+        update shopping_cart SET num = #{num}
+        where uuid = #{uuid}
+    </update>
+
+    <delete id="deleteBook">
+        delete from shopping_cart
+        where uuid=#{uuid}
+    </delete>
+
+    <delete id="deleteAllBook">
+        delete from shopping_cart
+        where username=#{username}
+    </delete>
 </mapper>

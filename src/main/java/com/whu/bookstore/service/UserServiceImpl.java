@@ -26,17 +26,20 @@ public class UserServiceImpl implements IUserService {
         return userMapper.selectByUsername(username);
     }
 
+    @Override
     // 删除用户，这个现在没用
     public List<User> delByUsername(String username) {
         return userMapper.deleteByUsername(username);
     }
 
+    @Override
     // 添加用户，注册
     public String insUser(String uuid, String username, String password, String name, String position,String image) {
         userMapper.insertUser(uuid,username,password,name,position,image);
         return "注册成功";
     }
 
+    @Override
     // 修改用户信息
     public String updUser(String username, String password, String name, String position,String image) {
         userMapper.updateUser(username,password,name,position,image);
@@ -44,18 +47,21 @@ public class UserServiceImpl implements IUserService {
     }
 
     // 修改昵称
+    @Override
     public String updName(String username, String name) {
         userMapper.updateName(username,name);
         return "修改成功";
     }
 
     // 修改图片
+    @Override
     public String updImage(String username, String image) {
         userMapper.updateImage(username,image);
         return "修改成功";
     }
 
     // 生成token
+    @Override
     public String getToken(String username, String password) {
         // 需要加密的字符串
         String src = username + password;

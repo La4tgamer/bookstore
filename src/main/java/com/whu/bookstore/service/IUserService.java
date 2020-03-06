@@ -5,7 +5,11 @@ import com.whu.bookstore.entity.User;
 import java.util.List;
 
 public interface IUserService {
-    // 通过用户名得到用户的密码，昵称，身份
+    /**
+     * 通过用户名得到用户的密码，昵称，身份
+     * @param username
+     * @return
+     */
     List<User> getByUsername(String username);
 
     // 删除用户
