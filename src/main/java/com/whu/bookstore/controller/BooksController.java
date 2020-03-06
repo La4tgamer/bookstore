@@ -36,11 +36,11 @@ public class BooksController {
         //得到图片url
         String url = PictureUtil.uploadImage(image, uuid, PictureUtil.filePathBook);
         if (url.equals("上传失败，请上传bmp、jpg、jpeg、png、gif文件！")){
-            result.setCode(400);
+            result.setCode(500);
             result.setMsg(url);
             return result;
         }else if (url.equals("图片上传至服务器失败！")){
-            result.setCode(400);
+            result.setCode(500);
             result.setMsg(url);
             return result;
         }
@@ -70,7 +70,7 @@ public class BooksController {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            result.setCode(400);
+            result.setCode(500);
         }
         return result;
 
@@ -86,10 +86,29 @@ public class BooksController {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            result.setCode(400);
+            result.setCode(500);
         }
         return result;
 
+    }
+
+    @GetMapping(value = "/someBook/{sort}")
+    public Result getBookLikeName(@RequestParam("name") String name,
+                                  @PathVariable("sort") String sort) {
+        Result result = new Result();
+        if (sort.equals("all")) {
+            sort = null;
+        }
+        try {
+            result.setData(booksService.getBookVoLikeName(name, sort));
+            result.setCode(200);
+            result.setMsg("成功");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            result.setCode(500);
+        }
+        return result;
     }
 
 }

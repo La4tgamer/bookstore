@@ -47,6 +47,14 @@ public interface BooksMapper {
      * @return
      */
     int insertBook(Book book);
+
+    /**
+     * 模糊查询书名
+     * @param name
+     * @return
+     */
+    List<BookVo> selectLikeName(@Param("name") String name, @Param("sort") String sort);
+
 }
 
 

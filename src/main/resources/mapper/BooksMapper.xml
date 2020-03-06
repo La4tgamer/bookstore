@@ -6,6 +6,18 @@
         where uuid = #{uuid}
     </select>
 
+    <select id="selectLikeName" resultType="com.whu.bookstore.common.BookVo">
+        select uuid,name,image,sort,price from books
+        <where>
+            <if test="sort != null">
+                and sort = #{sort}
+            </if>
+            <if test="name != null and name != ''">
+                and name LIKE CONCAT(CONCAT('%', #{name}), '%')
+            </if>
+        </where>
+    </select>
+
 
     <select id="selectAllBySort" resultType="com.whu.bookstore.common.BookVo">
         select uuid,name,image,sort,price from books
