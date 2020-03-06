@@ -12,7 +12,7 @@ import java.io.IOException;
  * @since ：Created in 2020/3/2 14:39
  */
 public class PictureUtil {
-    public static String filePathBook = "";;//"/root/lost/lostPhoto/";
+    public static String filePathBook = "E:\\photo\\";//System.getProperty("user.dir") + "\\src\\main\\resources\\static\\bookPhoto\\";;//"/root/lost/lostPhoto/";
     public static String filePathUser = "E:\\photo\\";
     public static String url = "http://localhost:9010/photo/";
 
@@ -46,21 +46,10 @@ public class PictureUtil {
         return url + UUID + suffixName;
     }
 
-    // 上传默认头像
-//    public static String defaultImage(MultipartFile image, String username, String filePath) throws IOException {
-//        String photoName = "default.jpg";
-//        String suffixName = ".jpg";
-//        String photoUrl = filePath + username + suffixName;  //生成新的存储地址
-//        File dest = new File(photoUrl);
-//        image.transferTo(dest);
-//        return url + username + suffixName;
-//    }
-
-
-//    /**
-//     * 删除服务器上的文件
-//     * @param UUID
-//     */
+    /**
+     * 删除服务器上的文件
+     * @param path
+     */
     public static void deletePhoto(String path){
 //        objectTable obj = objRepository.findById(UUID).get();
 //        String photoName = obj.getPhotoUrl();
@@ -82,14 +71,4 @@ public class PictureUtil {
         }
 
     }
-//
-//    /**
-//     * 删除服务器上的文件
-//     * @param UUID
-//     */
-//    public void deletePhoto(String UUID, String photoName){
-//        String suffixName = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
-//        File file = new File(filePath + UUID + suffixName);
-//        file.delete();
-//    }
 }

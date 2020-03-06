@@ -40,6 +40,12 @@ public interface BooksMapper {
 //    @Param("stock") int stock,
 //    @Param("description") String description,
 //    @Param("image") String image
+
+    /**
+     * 新增一本书
+     * @param book
+     * @return
+     */
     int insertBook(Book book);
 }
 

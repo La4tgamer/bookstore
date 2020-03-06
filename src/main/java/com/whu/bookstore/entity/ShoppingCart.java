@@ -20,11 +20,15 @@ public class ShoppingCart {
      */
     private String username;
 
+    private String name;
+
     private String bookId;
 
     private int num;
 
     private double singlePrice;
+
+    private String image;
 
     public String getUuid() {
         return uuid;
@@ -69,5 +73,21 @@ public class ShoppingCart {
     @Override
     public String toString() {
         return username + "," + bookId + "," + num + "," + singlePrice;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
