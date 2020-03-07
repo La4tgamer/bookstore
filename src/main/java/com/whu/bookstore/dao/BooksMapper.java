@@ -49,13 +49,6 @@ public interface BooksMapper {
     int insertBook(Book book);
 
 
-    /**
-     * 模糊查询书名
-     * @param name
-     * @return
-     */
-    List<BookVo> selectLikeName(@Param("name") String name, @Param("sort") String sort);
-
 
     /**
      * 更新库存
@@ -64,6 +57,14 @@ public interface BooksMapper {
      * @return
      */
     int updateStock(String uuid,int num);
+
+    /**
+     * 模糊查询书名
+     * @param name
+     * @return
+     */
+    List<BookVo> selectLikeName(@Param("name") String name, @Param("sort") String sort);
+
 }
 
 

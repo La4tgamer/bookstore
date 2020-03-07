@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whu.bookstore.dao.AddressesMapper">
+    <select id="selectByUser" resultType="com.whu.bookstore.entity.Address">
+        select * from addresses
+        where username = #{username}
+        order by name
+    </select>
+
+    <insert id="insertAddress" parameterType="com.whu.bookstore.entity.Address">
+        insert into addresses (uuid,username,name,phone,location)
+        values (#{uuid},#{username},#{name},#{phone},#{location})
+    </insert>
+
+    <update id="updateAddress" parameterType="com.whu.bookstore.entity.Address">
+        update addresses SET username=#{username}, name=#{name}, phone=#{phone},
+            location=#{location}
+        where uuid = #{uuid}
+    </update>
+
+    <delete id="deleteAddress">
+        delete from addresses
+        where uuid=#{uuid}
+    </delete>
+
+</mapper>
