@@ -48,4 +48,6 @@ public interface IBooksService {
                    int stock,
                    String description,
                    String image);
+
+    int updateStock(String uuid,int num);
 }

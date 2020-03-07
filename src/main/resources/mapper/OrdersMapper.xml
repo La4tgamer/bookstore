@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whu.bookstore.dao.OrdersMapper">
+    <select id="selectByOrderId" resultType="com.whu.bookstore.entity.Order">
+        select * from orders
+        where orderId = #{orderId}
+        order by bookId
+    </select>
+
+    <insert id="insertOrder" parameterType="com.whu.bookstore.entity.Order">
+        insert into orders (uuid,orderId,username,bookId,num,price, time)
+        values (#{uuid},#{orderId},#{username},#{bookId},#{num},#{price},#{time})
+    </insert>
+
+    <select id="selectByUsername" resultType="com.whu.bookstore.entity.Order">
+        select * from orders
+        where username = #{username}
+        order by time
+    </select>
+
+
+</mapper>

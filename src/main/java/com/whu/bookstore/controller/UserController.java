@@ -57,6 +57,7 @@ public class UserController {
 
             user.get(0).setToken(token);
             result.setData(user);
+            result.setCode(200);
         }
         return result;
     }
@@ -81,6 +82,7 @@ public class UserController {
             String image = "http://localhost:9010/photo/default.jpg";
 
             result.setMsg(userService.insUser(uuid, username, password, name, position,image));
+            result.setCode(200);
         }
         else {
             result.setMsg("用户已存在");
@@ -105,6 +107,7 @@ public class UserController {
         Result result = new Result();
 //        List<User> user=userService.getByUsername(username);
         result.setMsg("更改昵称成功");
+        result.setCode(200);
         return result;
     }
 
@@ -133,6 +136,7 @@ public class UserController {
         }
         try {
             userService.updImage(username, url);
+            result.setCode(200);
             result.setMsg("上传成功！");
         }
         catch (Exception e) { //上传数据库失败则删除那张图片

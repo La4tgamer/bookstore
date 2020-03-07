@@ -20,4 +20,8 @@
         values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image})
     </insert>
 
+    <update id="updateStock" parameterType="com.whu.bookstore.entity.Book">
+        update books set stock = stock - #{num} where uuid = #{uuid};
+    </update>
+
 </mapper>

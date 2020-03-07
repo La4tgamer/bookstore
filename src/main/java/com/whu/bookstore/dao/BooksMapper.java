@@ -47,6 +47,14 @@ public interface BooksMapper {
      * @return
      */
     int insertBook(Book book);
+
+    /**
+     * 更新库存
+     * @param uuid
+     * @param num
+     * @return
+     */
+    int updateStock(String uuid,int num);
 }
 
 
