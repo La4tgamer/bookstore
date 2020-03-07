@@ -28,8 +28,8 @@
     </select>
 
     <insert id="insertBook" parameterType="com.whu.bookstore.entity.Book">
-        insert into books(uuid, name, author, press, sort, price, stock, description, image)
-        values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image})
+        insert into books(uuid, name, author, press, sort, price, stock, description, image, create_time)
+        values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image},now())
     </insert>
 
 </mapper>

@@ -1,5 +1,7 @@
 package com.whu.bookstore.entity;
 
+import java.time.LocalDateTime;
+
 /**
  * @author ：qx.w
  * @description：一种书的书实体类
@@ -51,6 +53,11 @@ public class Book {
      * 图片地址
      */
     private String image;
+
+    /**
+     * 时间
+     */
+    private LocalDateTime createTime;
 
     public String getUuid() {
         return uuid;
@@ -124,4 +131,11 @@ public class Book {
         this.image = image;
     }
 
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
 }
