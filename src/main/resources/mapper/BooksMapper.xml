@@ -6,6 +6,18 @@
         where uuid = #{uuid}
     </select>
 
+    <select id="selectLikeName" resultType="com.whu.bookstore.common.BookVo">
+        select uuid,name,image,sort,price from books
+        <where>
+            <if test="sort != null">
+                and sort = #{sort}
+            </if>
+            <if test="name != null and name != ''">
+                and name LIKE CONCAT(CONCAT('%', #{name}), '%')
+            </if>
+        </where>
+    </select>
+
 
     <select id="selectAllBySort" resultType="com.whu.bookstore.common.BookVo">
         select uuid,name,image,sort,price from books
@@ -16,8 +28,8 @@
     </select>
 
     <insert id="insertBook" parameterType="com.whu.bookstore.entity.Book">
-        insert into books(uuid, name, author, press, sort, price, stock, description, image)
-        values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image})
+        insert into books(uuid, name, author, press, sort, price, stock, description, image, create_time)
+        values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image},now())
     </insert>
 
     <update id="updateStock" parameterType="com.whu.bookstore.entity.Book">

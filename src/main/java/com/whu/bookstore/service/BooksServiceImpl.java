@@ -32,6 +32,11 @@ public class BooksServiceImpl implements IBooksService {
     }
 
     @Override
+    public List<BookVo> getBookVoLikeName(String name, String sort) {
+        return booksMapper.selectLikeName(name, sort);
+    }
+
+    @Override
     public int insertBook(String uuid, String name, String author, String press, String sort, double price, int stock, String description, String image) {
         Book book = new Book();
         book.setUuid(uuid);

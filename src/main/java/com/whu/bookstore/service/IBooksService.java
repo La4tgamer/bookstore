@@ -28,6 +28,14 @@ public interface IBooksService {
     List<BookVo> getBookVoBySort(String sort);
 
     /**
+     * 模糊查询书名
+     * @param name
+     * @param sort
+     * @return
+     */
+    List<BookVo> getBookVoLikeName(String name, String sort);
+
+    /**
      * 插入一本书
      * @param name
      * @param author
