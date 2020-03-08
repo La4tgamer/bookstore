@@ -47,7 +47,7 @@ public class OrdersController {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            result.setCode(400);
+            result.setCode(500);
         }
         return result;
     }
@@ -63,7 +63,7 @@ public class OrdersController {
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            result.setCode(400);
+            result.setCode(500);
         }
         return result;
     }
@@ -92,6 +92,7 @@ public class OrdersController {
                 if(num > stock){
                     bookStock = false;
                     result.setMsg("库存不足");
+                    result.setCode(500);
                 }
             }
             if(bookStock){
@@ -111,6 +112,7 @@ public class OrdersController {
         }
         catch (Exception e) {
             result.setMsg(e.getMessage());
+            result.setCode(500);
         }
         return result;
 
