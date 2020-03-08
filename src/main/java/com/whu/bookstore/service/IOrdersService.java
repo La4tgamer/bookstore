@@ -36,7 +36,10 @@ public interface IOrdersService {
      * @param num
      * @param price
      * @param time
+     * @param name
+     * @param phone
+     * @param location
      * @return
      */
-    int insertOrder(String uuid,String orderId,String username,String bookId,int num,double price,String time);
+    int insertOrder(String uuid,String orderId,String username,String bookId,int num,double price,String time,String name,String phone,String location);
 }

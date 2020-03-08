@@ -31,7 +31,7 @@ public class OrdersServiceImpl implements IOrdersService {
     }
 
     @Override
-    public int insertOrder(String uuid, String orderId, String username, String bookId, int num, double price, String time) {
+    public int insertOrder(String uuid, String orderId, String username, String bookId, int num, double price, String time,String name,String phone,String location) {
         Order order = new Order();
         order.setUuid(uuid);
         order.setOrderId(orderId);
@@ -40,6 +40,9 @@ public class OrdersServiceImpl implements IOrdersService {
         order.setNum(num);
         order.setPrice(price);
         order.setTime(time);
+        order.setName(name);
+        order.setPhone(phone);
+        order.setLocation(location);
         return ordersMapper.insertOrder(order);
     }
 }

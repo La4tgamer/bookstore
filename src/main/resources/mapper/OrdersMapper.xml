@@ -8,8 +8,8 @@
     </select>
 
     <insert id="insertOrder" parameterType="com.whu.bookstore.entity.Order">
-        insert into orders (uuid,orderId,username,bookId,num,price, time)
-        values (#{uuid},#{orderId},#{username},#{bookId},#{num},#{price},#{time})
+        insert into orders (uuid,orderId,username,bookId,num,price, time,name, phone, location)
+        values (#{uuid},#{orderId},#{username},#{bookId},#{num},#{price},#{time},#{name},#{phone},#{location})
     </insert>
 
     <select id="selectByUsername" resultType="com.whu.bookstore.entity.Order">

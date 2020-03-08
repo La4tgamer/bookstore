@@ -34,6 +34,23 @@ public class Order {
      */
     private String time;
 
+    /**
+     * 收件人
+     */
+    private String name;
+
+    /**
+     * 电话
+     */
+    private String phone;
+
+    /**
+     * 收货地址
+     */
+    private String location;
+
+
+
     public String getUuid() {
         return uuid;
     }
@@ -88,5 +105,29 @@ public class Order {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
