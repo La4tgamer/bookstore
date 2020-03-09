@@ -1,5 +1,6 @@
 package com.whu.bookstore.service;
 
+import com.whu.bookstore.common.Orders;
 import com.whu.bookstore.entity.Order;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface IOrdersService {
      * @param username
      * @return
      */
-    List<Order> getOrderByUsername(String username);
+    List<Orders> getOrderByUsername(String username);
 
     /**
      * 新增订单

@@ -73,9 +73,9 @@ public class OrdersController {
     @PostMapping(value = "/order")
     public Result insertOrders(@RequestBody OneOrder[] oneOrder,@RequestParam String name,@RequestParam String phone,@RequestParam String location) {
         Result result = new Result();
-        String orderId = UUID.randomUUID().toString(); //生成订单号
+
         boolean bookStock = true;
-        double price = 0;
+      //  double price = 0;
         Date day=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time =  df.format(day);
@@ -88,7 +88,7 @@ public class OrdersController {
                 int stock =  booksService.getBookByUuid(id).get(0).getStock();
                 int num = oneOrder[i].getNum();
                // double singlePrice = booksService.getBookByUuid(id).get(0).getPrice();
-                price = price + num*oneOrder[i].getSinglePrice();
+                // price = price + num*oneOrder[i].getSinglePrice();
                 if(num > stock){
                     bookStock = false;
                     result.setMsg("库存不足");
@@ -103,6 +103,8 @@ public class OrdersController {
                     int num = oneOrder[i].getNum();
                     booksService.updateStock(id,num);
                     String uuid = UUID.randomUUID().toString(); //生成uuid
+                    String orderId = UUID.randomUUID().toString(); //生成订单号
+                    double price = num*oneOrder[i].getSinglePrice();
                     ordersService.insertOrder(uuid,orderId,oneOrder[i].getUsername(),oneOrder[i].getBookId(),oneOrder[i].getNum(),price,time,name,phone,location);
                     shoppingCartService.deleteBook(oneOrder[i].getUuid());   // 删除购物车的数据
                 }

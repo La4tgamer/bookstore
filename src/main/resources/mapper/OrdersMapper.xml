@@ -12,9 +12,15 @@
         values (#{uuid},#{orderId},#{username},#{bookId},#{num},#{price},#{time},#{name},#{phone},#{location})
     </insert>
 
-    <select id="selectByUsername" resultType="com.whu.bookstore.entity.Order">
-        select * from orders
-        where username = #{username}
+<!--    <select id="selectByUsername" resultType="com.whu.bookstore.entity.Order">-->
+<!--        select * from orders-->
+<!--        where username = #{username}-->
+<!--        order by time-->
+<!--    </select>-->
+
+    <select id="selectByUsername" resultType="com.whu.bookstore.common.Orders">
+        select orderId,bookId,num,orders.price,time,orders.name as receiver,phone,location,books.name as bookName,books.image from books,orders
+        WHERE bookId = books.uuid and username = #{username}
         order by time
     </select>
 
