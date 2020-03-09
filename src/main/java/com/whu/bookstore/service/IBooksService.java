@@ -86,5 +86,7 @@ public interface IBooksService {
      * @return
      */
     int deleteBook(String uuid);
+
+    int updateStock(String uuid,int num);
 }
 

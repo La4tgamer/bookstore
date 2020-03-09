@@ -73,5 +73,10 @@ public class BooksServiceImpl implements IBooksService {
         return booksMapper.deleteBook(uuid);
     }
 
+    @Override
+    public int updateStock(String uuid,int num) {
+        return booksMapper.updateStock(uuid, num);
+    }
+
 
 }

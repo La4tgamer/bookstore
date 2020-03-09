@@ -43,9 +43,11 @@ public class UserController {
         Result result = new Result();
         if(user==null|| user.size() ==0){
             result.setMsg("用户名不存在");
+            result.setCode(500);
         }
         else if (!password.equals(user.get(0).getPassword())){
             result.setMsg("密码错误");
+            result.setCode(500);
         }
         else if (password.equals(user.get(0).getPassword())){
             String token = userService.getToken(username,password);
@@ -57,6 +59,7 @@ public class UserController {
 
             user.get(0).setToken(token);
             result.setData(user);
+            result.setCode(200);
         }
         return result;
     }
@@ -81,9 +84,11 @@ public class UserController {
             String image = "http://localhost:9010/photo/default.jpg";
 
             result.setMsg(userService.insUser(uuid, username, password, name, position,image));
+            result.setCode(200);
         }
         else {
             result.setMsg("用户已存在");
+            result.setCode(500);
         }
         return result;
     }
@@ -105,6 +110,7 @@ public class UserController {
         Result result = new Result();
 //        List<User> user=userService.getByUsername(username);
         result.setMsg("更改昵称成功");
+        result.setCode(200);
         return result;
     }
 
@@ -123,21 +129,23 @@ public class UserController {
 
         String url = PictureUtil.uploadImage(image, username, PictureUtil.filePathUser);
         if (url.equals("上传失败，请上传bmp、jpg、jpeg、png、gif文件！")){
-            result.setCode(400);
+            result.setCode(500);
             result.setMsg(url);
             return result;
         }else if (url.equals("图片上传至服务器失败！")){
-            result.setCode(400);
+            result.setCode(500);
             result.setMsg(url);
             return result;
         }
         try {
             userService.updImage(username, url);
+            result.setCode(200);
             result.setMsg("上传成功！");
         }
         catch (Exception e) { //上传数据库失败则删除那张图片
 //            objService.deletePhoto(uuid, url);
             result.setMsg("上传失败，数据库写入失败！");
+            result.setCode(500);
         }
 
         return result;
