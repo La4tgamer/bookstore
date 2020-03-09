@@ -6,7 +6,7 @@ package com.whu.bookstore.common;
  * @author: lyj
  * @create: 2020-03-09 09:44
  **/
-public class Orders {
+public class OrdersVo {
     private String orderId;
     private String bookId;
     private int num;
@@ -18,7 +18,7 @@ public class Orders {
     private String bookName;
     private String image;
 
-    public Orders() {
+    public OrdersVo() {
     }
 
     public String getBookId() {

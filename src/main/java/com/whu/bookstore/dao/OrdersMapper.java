@@ -1,6 +1,6 @@
 package com.whu.bookstore.dao;
 
-import com.whu.bookstore.common.Orders;
+import com.whu.bookstore.common.OrdersVo;
 import com.whu.bookstore.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -29,7 +29,7 @@ public interface OrdersMapper {
      * @param username
      * @return
      */
-    List<Orders> selectByUsername(@Param("username") String username);
+    List<OrdersVo> selectByUsername(@Param("username") String username);
 
     /**
      * 新增订单

@@ -8,7 +8,7 @@ package com.whu.bookstore.common;
  **/
 
 
-public class OneOrder {
+public class OneOrderVo {
     /**
      * 编号
      */
