@@ -1,6 +1,7 @@
 package com.whu.bookstore.dao;
 
 import com.whu.bookstore.common.BookVo;
+import com.whu.bookstore.entity.Address;
 import com.whu.bookstore.entity.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -54,6 +55,23 @@ public interface BooksMapper {
      * @return
      */
     List<BookVo> selectLikeName(@Param("name") String name, @Param("sort") String sort);
+
+    /**
+     * 修改一本书
+     * @param book
+     * @return
+     */
+    int updateBook(Book book);
+
+
+    /**
+     * 删除一本书
+     * @param uuid
+     * @return
+     */
+    int deleteBook(@Param("uuid") String uuid);
+
+
 
 }
 

@@ -32,6 +32,11 @@ public class BookVo {
      */
     private double price;
 
+    /**
+     * 库存
+     */
+    private int stock;
+
     public BookVo() {
     }
 
@@ -73,5 +78,13 @@ public class BookVo {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

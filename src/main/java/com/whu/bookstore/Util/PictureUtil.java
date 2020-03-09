@@ -50,7 +50,7 @@ public class PictureUtil {
      * 删除服务器上的文件
      * @param path
      */
-    public static void deletePhoto(String path){
+    public static boolean deletePhoto(String path){
 //        objectTable obj = objRepository.findById(UUID).get();
 //        String photoName = obj.getPhotoUrl();
 //        String suffixName = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
@@ -59,16 +59,52 @@ public class PictureUtil {
 //        file.delete();
         int lastIndexOf = path.lastIndexOf("/");
         String img_path = path.substring(lastIndexOf + 1, path.length());
-        if(!img_path.equals("default.jpg"))
-        {
-            img_path = "E:/photo/" + img_path;
-            File file = new File(img_path);
-            file.delete();
+        try {
+            if(!img_path.equals("default.jpg"))
+            {
+                img_path = "E:/photo/" + img_path;
+                File file = new File(img_path);
+                file.delete();
+            }
+            else
+            {
+                img_path = "E:/photo/" + img_path;
+                File file = new File(img_path);
+                file.delete();
+            }
         }
-        else
-        {
-
+        catch (Exception e) {
+            return false;
         }
+        return true;
 
+    }
+
+    /**
+     * 删除服务器上的文件
+     * @param path
+     * @param filePath “user”“book”填写的时候调用静态变量
+     */
+    public static boolean deletePhoto(String path, String filePath){
+//        objectTable obj = objRepository.findById(UUID).get();
+//        String photoName = obj.getPhotoUrl();
+//        String suffixName = photoName.substring(photoName.lastIndexOf(".")).toLowerCase();
+//
+//        File file = new File(filePath + UUID + suffixName);
+//        file.delete();
+        int lastIndexOf = path.lastIndexOf("/");
+        String img_path = path.substring(lastIndexOf + 1, path.length());
+        try {
+            if(!img_path.equals("default.jpg"))
+            {
+                img_path = filePath + img_path;
+                File file = new File(img_path);
+                file.delete();
+            }
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }

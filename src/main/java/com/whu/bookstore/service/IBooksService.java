@@ -56,4 +56,35 @@ public interface IBooksService {
                    int stock,
                    String description,
                    String image);
+
+    /**
+     * 更新书
+     * @param uuid
+     * @param name
+     * @param author
+     * @param press
+     * @param sort
+     * @param price
+     * @param stock
+     * @param description
+     * @param image
+     * @return
+     */
+    int updateBook(String uuid,
+                   String name,
+                   String author,
+                   String press,
+                   String sort,
+                   double price,
+                   int stock,
+                   String description,
+                   String image);
+
+    /**
+     * 删除一本书
+     * @param uuid
+     * @return
+     */
+    int deleteBook(String uuid);
 }
+

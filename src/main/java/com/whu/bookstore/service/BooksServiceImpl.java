@@ -52,5 +52,26 @@ public class BooksServiceImpl implements IBooksService {
         return booksMapper.insertBook(book);
     }
 
+    @Override
+    public int updateBook(String uuid, String name, String author, String press, String sort, double price, int stock, String description, String image) {
+        Book book = new Book();
+        book.setUuid(uuid);
+        book.setName(name);
+        book.setAuthor(author);
+        book.setPress(press);
+        book.setSort(sort);
+        book.setPrice(price);
+        book.setStock(stock);
+        book.setDescription(description);
+        book.setImage(image);
+        //return booksMapper.insertBook(name, author, press, sort, price, stock, description, image);
+        return booksMapper.updateBook(book);
+    }
+
+    @Override
+    public int deleteBook(String uuid) {
+        return booksMapper.deleteBook(uuid);
+    }
+
 
 }

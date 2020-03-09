@@ -7,7 +7,7 @@
     </select>
 
     <select id="selectLikeName" resultType="com.whu.bookstore.common.BookVo">
-        select uuid,name,image,sort,price from books
+        select uuid,name,image,sort,price,stock from books
         <where>
             <if test="sort != null">
                 and sort = #{sort}
@@ -18,9 +18,8 @@
         </where>
     </select>
 
-
     <select id="selectAllBySort" resultType="com.whu.bookstore.common.BookVo">
-        select uuid,name,image,sort,price from books
+        select uuid,name,image,sort,price,stock from books
     <if test="sort!=null">
         where sort = #{sort}
     </if>
@@ -31,5 +30,16 @@
         insert into books(uuid, name, author, press, sort, price, stock, description, image, create_time)
         values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image},now())
     </insert>
+
+    <update id="updateBook" parameterType="com.whu.bookstore.entity.Book">
+        update books SET name=#{name},author=#{author},press=#{press},sort=#{sort},
+        price=#{price},stock=#{stock},description=#{description},image=#{image}
+        where uuid = #{uuid}
+    </update>
+
+    <delete id="deleteBook">
+        delete from books
+        where uuid=#{uuid}
+    </delete>
 
 </mapper>
