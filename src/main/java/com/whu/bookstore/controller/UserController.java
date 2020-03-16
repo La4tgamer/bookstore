@@ -72,7 +72,7 @@ public class UserController {
 //        return "删除成功";
 //    }
 
-    // 注册
+    // 普通用户注册
     @PostMapping("/user/register")
     public Result postUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("name") String name) {
         Result result = new Result();
@@ -81,6 +81,27 @@ public class UserController {
         if (user==null|| user.size() ==0){
             //result.setData(userService.insUser(uuid, username, password, name, position,image));
             String position = "ordinaryuser";
+            String image = "http://localhost:9010/photo/default.jpg";
+
+            result.setMsg(userService.insUser(uuid, username, password, name, position,image));
+            result.setCode(200);
+        }
+        else {
+            result.setMsg("用户已存在");
+            result.setCode(500);
+        }
+        return result;
+    }
+
+    // 添加管理员
+    @PostMapping("/administrator/register")
+    public Result postAdministrator(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("name") String name) {
+        Result result = new Result();
+        String uuid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
+        List<User> user = userService.getByUsername(username);
+        if (user==null|| user.size() ==0){
+            //result.setData(userService.insUser(uuid, username, password, name, position,image));
+            String position = "administrator";
             String image = "http://localhost:9010/photo/default.jpg";
 
             result.setMsg(userService.insUser(uuid, username, password, name, position,image));
