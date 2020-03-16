@@ -125,7 +125,7 @@ public class UserController {
         List<User> user = userService.getByUsername(username);
       //  String path = user.get(5).toString();
         String path  = user.get(0).getImage().toString();
-        PictureUtil.deletePhoto(path);
+        PictureUtil.deletePhoto(path, PictureUtil.filePathUser);
 
         String url = PictureUtil.uploadImage(image, username, PictureUtil.filePathUser);
         if (url.equals("上传失败，请上传bmp、jpg、jpeg、png、gif文件！")){

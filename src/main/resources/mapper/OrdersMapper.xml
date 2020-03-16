@@ -18,7 +18,7 @@
 <!--        order by time-->
 <!--    </select>-->
 
-    <select id="selectByUsername" resultType="com.whu.bookstore.common.Orders">
+    <select id="selectByUsername" resultType="com.whu.bookstore.common.OrdersVo">
         select orderId,bookId,num,orders.price,time,orders.name as receiver,phone,location,books.name as bookName,books.image from books,orders
         WHERE bookId = books.uuid and username = #{username}
         order by time

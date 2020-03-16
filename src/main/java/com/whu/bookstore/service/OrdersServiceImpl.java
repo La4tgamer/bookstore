@@ -1,6 +1,6 @@
 package com.whu.bookstore.service;
 
-import com.whu.bookstore.common.Orders;
+import com.whu.bookstore.common.OrdersVo;
 import com.whu.bookstore.dao.OrdersMapper;
 import com.whu.bookstore.entity.Order;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class OrdersServiceImpl implements IOrdersService {
     }
 
     @Override
-    public List<Orders> getOrderByUsername(String username) {
+    public List<OrdersVo> getOrderByUsername(String username) {
         return ordersMapper.selectByUsername(username);
     }
 

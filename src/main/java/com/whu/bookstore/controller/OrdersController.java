@@ -1,19 +1,15 @@
 package com.whu.bookstore.controller;
 
-import com.whu.bookstore.Util.PictureUtil;
-import com.whu.bookstore.common.OneOrder;
+import com.whu.bookstore.common.OneOrderVo;
 import com.whu.bookstore.common.Result;
-import com.whu.bookstore.entity.ShoppingCart;
 import com.whu.bookstore.service.IBooksService;
 import com.whu.bookstore.service.IOrdersService;
 import com.whu.bookstore.service.IShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -71,7 +67,7 @@ public class OrdersController {
 
     // 新增订单
     @PostMapping(value = "/order")
-    public Result insertOrders(@RequestBody OneOrder[] oneOrder,@RequestParam String name,@RequestParam String phone,@RequestParam String location) {
+    public Result insertOrders(@RequestBody OneOrderVo[] oneOrder, @RequestParam String name, @RequestParam String phone, @RequestParam String location) {
         Result result = new Result();
 
         boolean bookStock = true;
