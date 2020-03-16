@@ -26,6 +26,13 @@
         order by name
     </select>
 
+    <select id="selectByTime" resultType="com.whu.bookstore.common.BookVo">
+        select uuid,name,image,sort,price,stock from books
+        where DATE_FORMAT(create_time,'%Y-%m-%d') between DATE_FORMAT(#{dateTime1},'%Y-%m-%d')
+        and DATE_FORMAT(#{dateTime2},'%Y-%m-%d')
+        order by create_time
+    </select>
+
     <insert id="insertBook" parameterType="com.whu.bookstore.entity.Book">
         insert into books(uuid, name, author, press, sort, price, stock, description, image, create_time)
         values(#{uuid}, #{name},#{author},#{press},#{sort},#{price},#{stock},#{description},#{image},now())

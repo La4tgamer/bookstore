@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -81,6 +82,11 @@ public interface BooksMapper {
      */
     int deleteBook(@Param("uuid") String uuid);
 
+    /**
+     * 查询一共有多少书
+     * @return
+     */
+    List<BookVo> selectByTime(@Param("dateTime1") LocalDateTime dateTime1, @Param("dateTime2") LocalDateTime dateTime2);
 
 
 }

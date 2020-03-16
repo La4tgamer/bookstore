@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -34,6 +35,16 @@ public class BooksServiceImpl implements IBooksService {
     @Override
     public List<BookVo> getBookVoLikeName(String name, String sort) {
         return booksMapper.selectLikeName(name, sort);
+    }
+
+    @Override
+    public List<BookVo> getBookVoByTime(LocalDateTime dateTime1, LocalDateTime dateTime2) {
+        return booksMapper.selectByTime(dateTime1, dateTime2);
+    }
+
+    @Override
+    public int getBookNumByTime(LocalDateTime dateTime1, LocalDateTime dateTime2) {
+        return booksMapper.selectByTime(dateTime1, dateTime2).size();
     }
 
     @Override
