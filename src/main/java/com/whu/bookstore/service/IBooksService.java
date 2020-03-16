@@ -4,6 +4,7 @@ import com.whu.bookstore.common.BookVo;
 import com.whu.bookstore.entity.Book;
 import org.apache.ibatis.annotations.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -34,6 +35,22 @@ public interface IBooksService {
      * @return
      */
     List<BookVo> getBookVoLikeName(String name, String sort);
+
+    /**
+     * 时间段之间的书
+     * @param dateTime1
+     * @param dateTime2
+     * @return
+     */
+    List<BookVo> getBookVoByTime(LocalDateTime dateTime1, LocalDateTime dateTime2);
+
+    /**
+     * 时间段书数量
+     * @param dateTime1
+     * @param dateTime2
+     * @return
+     */
+    int getBookNumByTime(LocalDateTime dateTime1, LocalDateTime dateTime2);
 
     /**
      * 插入一本书
