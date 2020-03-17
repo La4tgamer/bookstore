@@ -3,6 +3,7 @@ package com.whu.bookstore.service;
 import com.whu.bookstore.common.OrdersVo;
 import com.whu.bookstore.entity.Order;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -43,4 +44,12 @@ public interface IOrdersService {
      * @return
      */
     int insertOrder(String uuid,String orderId,String username,String bookId,int num,double price,String time,String name,String phone,String location);
+
+    /**
+     * 时间段内订单量
+     * @param dateTime1
+     * @param dateTime2
+     * @return
+     */
+    int selectByTime(LocalDateTime dateTime1, LocalDateTime dateTime2);
 }

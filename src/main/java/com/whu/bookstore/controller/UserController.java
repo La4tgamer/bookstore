@@ -1,6 +1,7 @@
 package com.whu.bookstore.controller;
 
 import com.whu.bookstore.Util.PictureUtil;
+import com.whu.bookstore.Util.TimeUtil;
 import com.whu.bookstore.common.Result;
 import com.whu.bookstore.entity.User;
 import com.whu.bookstore.service.IUserService;
@@ -10,7 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 import java.util.List;
@@ -83,7 +87,11 @@ public class UserController {
             String position = "ordinaryuser";
             String image = "http://localhost:9010/photo/default.jpg";
 
-            result.setMsg(userService.insUser(uuid, username, password, name, position,image));
+            Date day=new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time =  df.format(day);
+
+            result.setMsg(userService.insUser(uuid, username, password, name, position,image,time));
             result.setCode(200);
         }
         else {
@@ -104,7 +112,10 @@ public class UserController {
             String position = "administrator";
             String image = "http://localhost:9010/photo/default.jpg";
 
-            result.setMsg(userService.insUser(uuid, username, password, name, position,image));
+            Date day=new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time =  df.format(day);
+            result.setMsg(userService.insUser(uuid, username, password, name, position,image,time));
             result.setCode(200);
         }
         else {
@@ -179,6 +190,23 @@ public class UserController {
 //        return "你已通过验证";
 //    }
 
+    // 查询时间段内普通用户注册量
+    @GetMapping(value = "/timeUser")
+    public Result selectByTime(@RequestParam("dateTime1") String datetime1, @RequestParam("dateTime2") String datetime2) {
+        Result result = new Result();
+        LocalDateTime dateTime1 = TimeUtil.parserString2LocalDateTime(datetime1, TimeUtil.DATE_FORMAT);
+        LocalDateTime dateTime2 = TimeUtil.parserString2LocalDateTime(datetime2, TimeUtil.DATE_FORMAT);
+        try {
+            result.setData(userService.selectByTime(dateTime1, dateTime2));
+            result.setCode(200);
+            result.setMsg("查询成功");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            result.setCode(500);
+        }
+        return result;
+    }
 
 
 }

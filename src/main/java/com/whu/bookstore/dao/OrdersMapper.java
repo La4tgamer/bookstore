@@ -5,6 +5,7 @@ import com.whu.bookstore.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -37,4 +38,12 @@ public interface OrdersMapper {
      * @return
      */
     int insertOrder(Order order);
+
+    /**
+     * 查询一段时间内的订单量
+     * @param dateTime1
+     * @param dateTime2
+     * @return
+     */
+    int selectByTime(@Param("dateTime1") LocalDateTime dateTime1, @Param("dateTime2") LocalDateTime dateTime2);
 }

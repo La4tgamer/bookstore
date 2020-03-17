@@ -6,6 +6,7 @@ import com.whu.bookstore.entity.Order;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -45,5 +46,10 @@ public class OrdersServiceImpl implements IOrdersService {
         order.setPhone(phone);
         order.setLocation(location);
         return ordersMapper.insertOrder(order);
+    }
+
+    @Override
+    public int selectByTime(LocalDateTime dateTime1, LocalDateTime dateTime2) {
+        return ordersMapper.selectByTime(dateTime1,dateTime2);
     }
 }

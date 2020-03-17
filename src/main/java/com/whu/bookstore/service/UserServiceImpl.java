@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public List<User> delByUsername(String username) {
+    public int delByUsername(String username) {
         return userMapper.deleteByUsername(username);
     }
 
@@ -51,8 +52,8 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public String insUser(String uuid, String username, String password, String name, String position,String image) {
-        userMapper.insertUser(uuid,username,password,name,position,image);
+    public String insUser(String uuid, String username, String password, String name, String position,String image,String time) {
+        userMapper.insertUser(uuid,username,password,name,position,image,time);
         return "注册成功";
     }
 
@@ -93,6 +94,11 @@ public class UserServiceImpl implements IUserService {
     public String updImage(String username, String image) {
         userMapper.updateImage(username,image);
         return "修改成功";
+    }
+
+    @Override
+    public int selectByTime(LocalDateTime dateTime1, LocalDateTime dateTime2) {
+        return userMapper.selectByTime(dateTime1,dateTime2);
     }
 
     /**

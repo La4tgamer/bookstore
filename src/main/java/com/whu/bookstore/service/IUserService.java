@@ -2,6 +2,7 @@ package com.whu.bookstore.service;
 
 import com.whu.bookstore.entity.User;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IUserService {
@@ -13,10 +14,10 @@ public interface IUserService {
     List<User> getByUsername(String username);
 
     // 删除用户
-    List<User> delByUsername(String username);
+    int delByUsername(String username);
 
     // 注册用
-    String insUser(String uuid, String username, String password, String name, String position,String image);
+    String insUser(String uuid, String username, String password, String name, String position,String image,String time);
 
     // 修改用户信息
     String updUser(String username, String password, String name, String position,String image);
@@ -29,4 +30,12 @@ public interface IUserService {
 
     // 改图片
     String updImage(String username, String image);
+
+    /**
+     * 时间段普通用户注册量
+     * @param dateTime1
+     * @param dateTime2
+     * @return
+     */
+    int selectByTime(LocalDateTime dateTime1, LocalDateTime dateTime2);
 }

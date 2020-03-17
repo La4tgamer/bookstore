@@ -1,5 +1,6 @@
 package com.whu.bookstore.controller;
 
+import com.whu.bookstore.Util.TimeUtil;
 import com.whu.bookstore.common.OneOrderVo;
 import com.whu.bookstore.common.Result;
 import com.whu.bookstore.service.IBooksService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -113,6 +115,23 @@ public class OrdersController {
             result.setCode(500);
         }
         return result;
+    }
 
+    // 查询时间段内订单
+    @GetMapping(value = "/timeOrder")
+    public Result selectByTime(@RequestParam("dateTime1") String datetime1, @RequestParam("dateTime2") String datetime2) {
+        Result result = new Result();
+        LocalDateTime dateTime1 = TimeUtil.parserString2LocalDateTime(datetime1, TimeUtil.DATE_FORMAT);
+        LocalDateTime dateTime2 = TimeUtil.parserString2LocalDateTime(datetime2, TimeUtil.DATE_FORMAT);
+        try {
+            result.setData(ordersService.selectByTime(dateTime1, dateTime2));
+            result.setCode(200);
+            result.setMsg("查询成功");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            result.setCode(500);
+        }
+        return result;
     }
 }

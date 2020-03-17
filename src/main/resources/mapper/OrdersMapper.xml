@@ -24,5 +24,11 @@
         order by time
     </select>
 
+    <select id="selectByTime" resultType="java.lang.Integer">
+        select count(*) from orders
+        where DATE_FORMAT(time,'%Y-%m-%d') between DATE_FORMAT(#{dateTime1},'%Y-%m-%d')
+        and DATE_FORMAT(#{dateTime2},'%Y-%m-%d')
+    </select>
+
 
 </mapper>
