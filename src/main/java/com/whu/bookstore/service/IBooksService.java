@@ -104,6 +104,12 @@ public interface IBooksService {
      */
     int deleteBook(String uuid);
 
+    /**
+     * 更新库存
+     * @param uuid
+     * @param num
+     * @return
+     */
     int updateStock(String uuid,int num);
 }
 
