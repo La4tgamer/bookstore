@@ -48,6 +48,7 @@ public class BooksController {
         }
         try {
             booksService.insertBook(uuid, name, author, press, sort, price, stock, description, url);
+            result.setCode(200);
             result.setMsg("上传成功！");
         }
         catch (Exception e) { //上传数据库失败则删除那张图片
@@ -144,8 +145,15 @@ public class BooksController {
                                    @RequestParam("description") String description,
                                    @RequestParam("image") MultipartFile image) {
         Result result = new Result();
-
-        String url = booksService.getBookByUuid(uuid).get(0).getImage();
+        String url = null;
+        try {
+            url = booksService.getBookByUuid(uuid).get(0).getImage();
+        }
+        catch (NullPointerException e) {
+            result.setCode(302);
+            result.setMsg("没有该uuid");
+            return result;
+        }
         //首先判断删除老图片是否成功
         if (!PictureUtil.deletePhoto(url, PictureUtil.filePathBook)) {
             result.setCode(500);

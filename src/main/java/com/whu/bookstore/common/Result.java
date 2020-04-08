@@ -24,8 +24,19 @@ public class Result {
      * 500 服务器代码异常
      */
 
+    /**
+     * 返回代码
+     */
     private int code = 0;
+
+    /**
+     * 返回信息
+     */
     private String msg = "";
+
+    /**
+     * 返回数据
+     */
     private Object data = null;
 
     public int getCode() {

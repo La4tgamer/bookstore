@@ -12,7 +12,7 @@ import java.io.IOException;
  * @since ：Created in 2020/3/2 14:39
  */
 public class PictureUtil {
-    public static String filePathBook = "E:\\photo\\";//System.getProperty("user.dir") + "\\src\\main\\resources\\static\\bookPhoto\\";;//"/root/lost/lostPhoto/";
+    public static String filePathBook = "E:\\photo\\";//System.getProperty("user.dir") + "\\src\\main\\resources\\static\\bookPhoto\\";
     public static String filePathUser = "E:\\photo\\";
     public static String url = "http://localhost:9010/photo/";
 

@@ -23,6 +23,12 @@ public class TimeUtil {
         return localDateTime.toLocalDate();
     }
 
+    /**
+     * 字符串转LocaDateTime
+     * @param dateTime
+     * @param formatter
+     * @return
+     */
     public static LocalDateTime parserString2LocalDateTime(final String dateTime, final String formatter) {
         DateTimeFormatter df = DateTimeFormatter.ofPattern(DATE_FORMAT);
         LocalDateTime dateTest = LocalDateTime.parse(dateTime, df);
